@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>TITLE</title>
+    <meta name="description" content="DESCRIPTION">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+
+   <link rel="stylesheet" href="css/bootstrap.min.css">
+   <link href="font/css/open-iconic-bootstrap.css" rel="stylesheet">
+   <link rel="stylesheet" href="css/bootstrap-timepicker.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" type="text/css" />
+    <link href="http://code.gijgo.com/1.6.1/css/gijgo.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="css/bootstrap-toggle.min.css">
+    <link rel="stylesheet" href="css/style.css">
+
+
+    <!--[if lt IE 9]>
+      <script src = "http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/bootstrap-gijgo.js" type="text/javascript"></script>
+    <script src="js/bootstrap-timepicker.js" type="text/javascript"></script>
+    <script src="js/bootstrap-timepicker.js" type="text/javascript"></script>
+    <script src="js/bootstrap-toggle.min.js" type="text/javascript"></script>
+
+    <!-- Datejs -->
+    <script type="text/javascript" src="src/globalization/pl-PL.js"></script>
+    <script type="text/javascript" src="src/core.js"></script>
+    <script type="text/javascript" src="src/sugarpak.js"></script>
+    <script type="text/javascript" src="src/parser.js"></script>
+    <script type="text/javascript" src="src/time.js"></script>
+
+</head>
+
+<body>
+  <!-- Header     -->
+  <div class="container-fluid bg-primary">
+    <div class="row">
+      <div class="col-12 col-md-9">
+        <a href="index.php"><h1 class="text-white">Raportowanie</h1></a>
+      </div>
+      <div class="col-12 col-md-3">
+        <span class="text-white">Zalogowany: Kamil Mossakowski <span class="text-danger"><b>(Wyloguj)</b></span></span>
+      </div>
+    </div>
+  </div>
+
+   <!-- Create Raport         -->
+   <div class="container container-margin">
+     <h2 class="text-secondary">Dodaj raport</h2>
+       <ul class="nav nav-tabs" id="myTab" role="tablist">
+      <li class="nav-item">
+        <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Raport dzienny</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Wolne</a>
+      </li>
+    </ul>
+    <div class="tab-content" id="myTabContent">
+
+      <!--Daily Raport         -->
+      <div class="tab-pane fade show active " id="home" role="tabpanel" aria-labelledby="home-tab">
+        <h3 class="text-secondary mt-3">1. Czas pracy</h3>
+
+        <form class="form mt-3">
+
+          <div class="form-group">
+            <label class="mr-3">Dzień</label>
+            <input class="form-control " id="datepicker-raportDay" />
+          </div>
+
+          <div class="form-group">
+            <label for="inputState">Twój przedział pracy</label>
+            <select id="frameWorkList" class="form-control">
+              <option data-frame-work-start="09:00" data-frame-work-end="17:00" >09:00 - 17:00</option>
+              <option data-frame-work-start="08:00" data-frame-work-end="16:00" selected>08:00 - 16:00</option>
+            </select>
+          </div>
+
+          <label class="mt-2">Start pracy</label>
+            <div class="input-group   bootstrap-timepicker timepicker">
+                <input id="startWork" type="text" class="form-control input-small">
+                <span class="input-group-addon "><i class="oi oi-clock"></i></span>
+            </div>
+
+          <label class="mt-2">Koniec pracy</label>
+            <div class="input-group  bootstrap-timepicker timepicker">
+                <input id="endWork" type="text" class="form-control input-small">
+                <span class="input-group-addon"><i class="oi oi-clock"></i></span>
+            </div>
+
+          <div class="input-group mt-3">
+            <label class="label-toggle mr-3">Spóźnienie?</label>
+            <!-- <input type="checkbox" data-on="Nie" data-off="Tak" checked data-toggle="toggle" data-onstyle="success"> -->
+          </div>
+        </form>
+
+        <!--Done task        -->
+
+        <form class="form doneTask">
+          <h3 class="text-secondary mt-3">2. Wykonane zadania <a class="addDoneTaskPlus" class="text-info" href="#">+</a></h3>
+          <div id="container-doneTask">
+            <div class="prompt-addTask">
+              <p class="text-secondary">
+                Aby dodać zdarzenie kliknij na +
+              </p>
+            </div>
+            <div id="accordion" role="tablist">
+              <div class="card">
+                <div class="card-header" role="tab" id="headingOne">
+                  <h5 class="mb-0">
+                    <a class="link-addDoneTask" data-toggle="collapse" href="#collapse-doneTask1" aria-expanded="true" aria-controls="collapseOne">
+                      #<span class="doneTask-number">1</span> <span class="doneTask-type">Serwis</span>
+                    </a>
+                  </h5>
+                </div>
+
+                <div id="collapse-doneTask1" class="collapse" role="tabpanel" aria-labelledby="headingOne" data-parent="#accordion">
+                  <div class="card-body">
+                    <label class="label-toggle mr-3">Typ zdarzenia</label>
+                    <select id="inputState" class="form-control form-select-taskType form-select-textarea">
+                                <optgroup label="Serwis">
+                                  <option selected>Serwis</option>
+                                  <option>Awaria</option>
+                                </optgroup>
+                                <optgroup label="Instalacja">
+                                  <option data-type->Światłowodowa</option>
+                                  <option>Radiowa</option>
+                                  <option>Blok</option>
+                                  <option>Zbiorcza</option>
+                                  <option>TV</option>
+                                </optgroup>
+                                <optgroup label="Biuro">
+                                    <option>Prace biurowe</option>
+                                    <option>Sprzątanie</option>
+                                </optgroup>
+
+                      </select>
+
+                      <label class="label-toggle mr-3 mt-3">Imię i nazwisko klienta / Nazwa firmy</label>
+                      <input type="text" class="form-control" placeholder="Imię i nazwisko lub nazwa firmy" />
+
+                      <label class="label-toggle mr-3 mt-3">Opis</label>
+                      <textarea class="form-control form-select-textarea" id="exampleFormControlTextarea1" placeholder="Opis przeprowadzonych czynności" rows="3"></textarea>
+
+
+                        <label class="label-toggle mr-3">Płatne?</label>
+                        <input type="checkbox" class="bootstrap-toggle-input" data-on="Nie" data-off="Tak" data-toggleid="1"  checked data-toggle="toggle" data-onstyle="default" data-offstyle="success">
+                        <br />
+                          <div data-formpay="1" class="form-group row bootstrap-toggle-form">
+                            <label class="label-toggle col-3 col-md-1">Kwota</label>
+                            <input class="form-control col-3 col-md-1" type="text">
+                          </div>
+                        <div class="doneTask-addDeleteLink">
+                          <span>( <a class="text-danger removeDoneTask" data-accordion-id="accordion" href="#">usuń zdarzenie</a> | <a class="text-info addDoneTaskPlus" href="#">dodaj nowe zdarzenie</a>)</span>
+                        </div>
+
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+          <!--End container done task        -->
+        </form>
+
+
+          <h3 class="text-secondary mt-3">3. Podsumowanie</h3>
+          <p>
+            Praca od: <span id="startWorkSummary"></span> do <span id="endWorkSummary"></span>
+          </p>
+          <p>
+            Czas pracy: <span id="timeWork"></span>
+          </p>
+          <p>
+            Spóźnienie: <span id="lateTime"></span>
+          </p>
+          <p>
+            Nadgodziny: <span id="overTime"></span>
+          </p>
+      </div>
+
+      <!-- End Daily Raport         -->
+
+      <!--Day off         -->
+      <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+        <div class="form">
+          <div class="form-group">
+          <label>Dzień</label>
+          <input class="form-control" id="datepicker-dayOff" />
+          </div>
+
+            <div class="form-group">
+              <label for="inputState">Powód</label>
+              <select id="inputState" class="form-control">
+                <option selected>Urlop</option>
+                <option>Urlop na żądanie</option>
+                <option>L4</option>
+                <option>Okolicznościowe</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="exampleFormControlTextarea1">Komentarz</label>
+              <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Wyślij</button>
+          </div>
+      </div> <!--End Day off         -->
+
+
+    </div>
+  </div>
+
+
+<script type="text/javascript" src="js/addRaport.js"></script>
+ </body>
+
+ </html>

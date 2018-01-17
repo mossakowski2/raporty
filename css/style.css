@@ -1,0 +1,47 @@
+.tiles {
+  width: 30%;
+  margin-top: 5px;
+}
+
+.container-margin {
+  margin-top: 10px;
+}
+
+/*Button*/
+
+.btn-default {
+    color: #333;
+    background-color: #fff;
+    border-color: #ccc;
+}
+
+.btn-default:hover, .btn-default:focus, .btn-default:active, .btn-default.active, .open>.dropdown-toggle.btn-default {
+    color: #333;
+    background-color: #e6e6e6;
+    border-color: #adadad;
+}
+
+.label-toggle {
+  line-height: 2.5rem;
+  margin-bottom: 0px !important;
+}
+
+.label-toggle-workTime {
+  line-height: 1.2rem;
+}
+
+.form-select-textarea {
+  width: 100% !important;
+}
+
+.doneTask {
+  display: block;
+}
+
+#accordion {
+  display: none;
+}
+
+div[data-formpay] {
+  display: none;
+}
